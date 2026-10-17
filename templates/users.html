@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Users | EduSphere{% endblock %}
+{% block content %}
+<div class="page-heading"><div class="eyebrow">ADMINISTRATION</div><h1>User management</h1><p class="muted">Create campus accounts and assign a role.</p></div>
+<div class="row g-4"><div class="col-lg-4"><div class="content-card"><h4>Create user</h4><form method="post">
+<label class="form-label">Full name</label><input class="form-control mb-3" name="name" required>
+<label class="form-label">Email</label><input class="form-control mb-3" type="email" name="email" required>
+<label class="form-label">Temporary password</label><input class="form-control mb-3" type="password" name="password" minlength="8" required>
+<label class="form-label">Role</label><select class="form-select mb-4" name="role">{% for role in roles %}<option value="{{ role }}">{{ role|title }}</option>{% endfor %}</select>
+<button class="btn btn-primary w-100">Create account</button></form></div></div>
+<div class="col-lg-8"><div class="content-card"><h4>Campus users <span class="count-pill">{{ users|length }}</span></h4><div class="table-responsive"><table class="table align-middle"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Created</th></tr></thead><tbody>{% for u in users %}<tr><td class="fw-semibold">{{ u.name }}</td><td>{{ u.email }}</td><td><span class="status-pill">{{ u.role }}</span></td><td>{{ u.created_at }}</td></tr>{% endfor %}</tbody></table></div></div></div></div>
+{% endblock %}

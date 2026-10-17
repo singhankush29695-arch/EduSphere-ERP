@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}Error {{ code }} | EduSphere{% endblock %}
+{% block content %}<div class="empty-state py-5"><span>!</span><h1>{{ code }}</h1><p>{{ message }}</p><a class="btn btn-primary" href="{{ url_for('dashboard') if session.get('user_id') else url_for('index') }}">Return to safety</a></div>{% endblock %}

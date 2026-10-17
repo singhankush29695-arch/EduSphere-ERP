@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}E-Library | EduSphere{% endblock %}
+{% block content %}
+<div class="page-heading"><div class="eyebrow">LEARNING RESOURCES</div><h1>E-Library</h1><p class="muted">A shared collection of useful learning links.</p></div>
+{% if session.get('role') in ['faculty','hod','admin'] %}<div class="content-card mb-4"><h4>Add a resource</h4><form method="post" class="row g-3"><div class="col-md-4"><input class="form-control" name="title" placeholder="Resource title" required></div><div class="col-md-3"><input class="form-control" name="subject" placeholder="Subject / category"></div><div class="col-md-5"><input class="form-control" name="resource_url" type="url" placeholder="https://..." required></div><div class="col-12"><button class="btn btn-primary">Add resource</button></div></form></div>{% endif %}
+<div class="row g-3">{% for r in resources %}<div class="col-md-6 col-xl-4"><div class="resource-card"><div class="resource-icon">↗</div><span class="course-tag">{{ r.subject or 'General' }}</span><h4>{{ r.title }}</h4><p>Added {{ r.created_at }}</p><a href="{{ r.resource_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">Open resource ↗</a></div></div>{% else %}<div class="col-12"><div class="empty-state">No resources yet.</div></div>{% endfor %}</div>
+{% endblock %}

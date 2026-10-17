@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}Notices | EduSphere{% endblock %}
+{% block content %}
+<div class="page-heading"><div class="eyebrow">CAMPUS COMMUNICATION</div><h1>Announcements</h1><p class="muted">Important updates in one place.</p></div>
+{% if session.get('role') in ['faculty','hod','admin'] %}<div class="content-card mb-4"><h4>Publish a notice</h4><form method="post"><label class="form-label">Title</label><input class="form-control mb-3" name="title" required><label class="form-label">Message</label><textarea class="form-control mb-3" name="body" rows="3" required></textarea><button class="btn btn-primary">Publish announcement</button></form></div>{% endif %}
+<div class="row g-3">{% for a in announcements %}<div class="col-md-6"><div class="content-card"><div class="notice-date">{{ a.created_at }}</div><h4>{{ a.title }}</h4><p>{{ a.body }}</p><small class="muted">Posted by {{ a.author or 'Campus staff' }}</small></div></div>{% else %}<div class="col-12"><div class="empty-state">No announcements have been published.</div></div>{% endfor %}</div>
+{% endblock %}

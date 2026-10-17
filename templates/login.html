@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Sign in | EduSphere{% endblock %}
+{% block content %}
+<div class="login-layout">
+  <div class="login-info"><div class="eyebrow">WELCOME TO EDUSPHERE</div><h1>Make campus<br><span>work smarter.</span></h1><p>Sign in to access your role-specific academic workspace.</p><div class="login-orbit">◈</div></div>
+  <div class="form-card login-card">
+    <h3>Sign in</h3><p class="muted">Use your campus account credentials.</p>
+    <form method="post">
+      <label class="form-label">Email address</label><input class="form-control form-control-lg mb-3" type="email" name="email" placeholder="you@college.edu" required>
+      <label class="form-label">Password</label><input class="form-control form-control-lg mb-4" type="password" name="password" placeholder="Enter password" required>
+      <button class="btn btn-primary btn-lg w-100">Sign in securely</button>
+    </form>
+    <div class="demo-box mt-4"><b>Demo accounts</b><small>Admin: admin@edusphere.local / Admin@123</small><small>Faculty: faculty@edusphere.local / Faculty@123</small><small>Student: student@edusphere.local / Student@123</small><small>HOD: hod@edusphere.local / Hod@12345</small></div>
+  </div>
+</div>
+{% endblock %}

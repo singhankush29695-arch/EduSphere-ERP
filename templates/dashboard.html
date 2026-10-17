@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | EduSphere{% endblock %}
+{% block content %}
+<div class="page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
+  <div><div class="eyebrow">YOUR CAMPUS AT A GLANCE</div><h1>Welcome, {{ session.get('name') }}.</h1><p class="muted mb-0">Here’s what’s happening in your workspace today.</p></div>
+  <div class="date-chip">▦ {{ today }}</div>
+</div>
+<div class="row g-3 mt-2">
+  <div class="col-6 col-xl-3"><div class="stat-card"><span class="stat-icon purple">▤</span><small>Assignments</small><strong>{{ stats.assignments }}</strong><span class="stat-sub">Published tasks</span></div></div>
+  <div class="col-6 col-xl-3"><div class="stat-card"><span class="stat-icon blue">▣</span><small>Library resources</small><strong>{{ stats.resources }}</strong><span class="stat-sub">Learning materials</span></div></div>
+  <div class="col-6 col-xl-3"><div class="stat-card"><span class="stat-icon orange">◉</span><small>Open grievances</small><strong>{{ stats.grievances }}</strong><span class="stat-sub">Awaiting review</span></div></div>
+  <div class="col-6 col-xl-3"><div class="stat-card"><span class="stat-icon green">⌂</span><small>Open tickets</small><strong>{{ stats.tickets }}</strong><span class="stat-sub">Campus maintenance</span></div></div>
+</div>
+{% if session.get('role') == 'student' %}
+<div class="row g-3 mt-1"><div class="col-md-6"><div class="mini-stat"><span>My submissions</span><strong>{{ stats.my_submissions }}</strong></div></div><div class="col-md-6"><div class="mini-stat"><span>Present attendance records</span><strong>{{ stats.my_attendance }}</strong></div></div></div>
+{% endif %}
+<div class="row g-4 mt-2">
+  <div class="col-lg-7"><div class="content-card h-100"><div class="section-head"><div><h4>Recent assignments</h4><p>Keep track of your academic tasks.</p></div><a href="{{ url_for('assignments') }}">View all →</a></div>
+  {% if assignments %}{% for a in assignments %}<div class="list-row"><div class="list-icon">A</div><div class="flex-grow-1"><b>{{ a.title }}</b><small>{{ a.course }} · by {{ a.creator or 'Campus staff' }}</small></div><span class="date-tag">{{ a.due_date or 'No due date' }}</span></div>{% endfor %}{% else %}<p class="muted">No assignments have been added yet.</p>{% endif %}</div></div>
+  <div class="col-lg-5"><div class="content-card h-100"><div class="section-head"><div><h4>Campus notices</h4><p>Latest announcements.</p></div><a href="{{ url_for('announcements') }}">View all →</a></div>
+  {% if announcements %}{% for a in announcements %}<div class="notice-row"><b>{{ a.title }}</b><p>{{ a.body }}</p><small>{{ a.created_at }}</small></div>{% endfor %}{% else %}<div class="empty-state"><span>✦</span><p>No notices yet.</p><small>New campus announcements will appear here.</small></div>{% endif %}</div></div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}EduSphere ERP | Smart Campus{% endblock %}
+{% block content %}
+<section class="hero-panel">
+  <div class="row align-items-center g-5">
+    <div class="col-lg-7">
+      <div class="eyebrow">SMART CAMPUS OPERATING SYSTEM</div>
+      <h1 class="hero-title">One campus.<br><span>One connected experience.</span></h1>
+      <p class="hero-copy">Bring academic workflows, attendance, assignments, results, campus resources, and service requests into one clean dashboard.</p>
+      <a class="btn btn-primary btn-lg mt-2" href="{{ url_for('login') }}">Open your workspace <span aria-hidden="true">→</span></a>
+      <div class="hero-note mt-3">Role-based access · Student-first design · Modular campus tools</div>
+    </div>
+    <div class="col-lg-5">
+      <div class="mock-dashboard">
+        <div class="mock-top"><span></span><span></span><span></span><small>Campus overview</small></div>
+        <div class="mock-welcome">Good day, campus 👋</div>
+        <div class="mock-grid"><div><small>Assignments</small><b>08</b></div><div><small>Resources</small><b>24</b></div><div><small>Attendance</small><b>92%</b></div><div><small>Notices</small><b>03</b></div></div>
+        <div class="mock-bar"><span></span></div><div class="mock-caption">Your academic life, organised.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="row g-3 mt-4">
+  <div class="col-md-4"><div class="feature-card"><div class="feature-icon">◎</div><h5>Academic hub</h5><p>Assignments, results, and attendance in one place.</p></div></div>
+  <div class="col-md-4"><div class="feature-card"><div class="feature-icon">▤</div><h5>Campus services</h5><p>Submit grievances and track maintenance requests.</p></div></div>
+  <div class="col-md-4"><div class="feature-card"><div class="feature-icon">⌘</div><h5>Role-aware access</h5><p>Separate views for students, faculty, HOD, and admin.</p></div></div>
+</div>
+{% endblock %}
